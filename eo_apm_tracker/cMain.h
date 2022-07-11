@@ -7,5 +7,7 @@ class cMain : public wxFrame
 public:
 	cMain();
 	~cMain();
+
+	wxStaticText* m_text1 = nullptr;
 };
 
