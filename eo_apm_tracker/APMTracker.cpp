@@ -9,7 +9,24 @@ APMTracker::~APMTracker()
 {
 }
 
-wxString APMTracker::IntToString(int i) 
+void APMTracker::Run()
 {
-	return wxString::Format(wxT("%i"), i);
+	while (1)
+	{
+		if (GetKeyState(VK_SHIFT) & 0x8000)
+		{
+			++apm;
+			Sleep(100);
+		}
+	}
+}
+
+void APMTracker::SetAPM(int apm)
+{
+	this->apm = apm;
+}
+
+int APMTracker::GetAPM()
+{
+	return this->apm;
 }

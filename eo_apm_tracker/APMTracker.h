@@ -1,6 +1,7 @@
 #pragma once
 
-#include <wx/wx.h>
+#include <Windows.h>
+#include <thread>
 
 class APMTracker
 {
@@ -8,8 +9,14 @@ public:
 	APMTracker();
 	~APMTracker();
 
-	wxString IntToString(int i);
+	void Run();
+	void SetAPM(int apm);
+	int GetAPM();
 
 private:
+	bool thread_state = false;
+	bool thread_error = false;
+
+	int apm = 0;
 };
 
