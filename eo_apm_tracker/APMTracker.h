@@ -2,6 +2,7 @@
 
 #include <Windows.h>
 #include <thread>
+#include <mutex>
 
 class APMTracker
 {
@@ -10,6 +11,8 @@ public:
 	~APMTracker();
 
 	void Run();
+	void Tick();
+
 	void SetAPM(int apm);
 	int GetAPM();
 
