@@ -1,22 +1,25 @@
 
 #include "Main.h"
 
-APMTracker APMTracker::tracker_instance;
-
+int APMTracker::current_apm = 0;
 Main::Main() : wxFrame(nullptr, wxID_ANY, "eo_apm_tracker", wxPoint(1840, 50), wxSize(70, 30), wxSTAY_ON_TOP)
 {
-	APMTracker::Initialise().Run();
+	this->tracker = new APMTracker();
 
-	apm_text = new wxStaticText(this, wxID_ANY, (wxString::Format(wxT("%i APM"), APMTracker::Initialise().GetAPM())), wxPoint(5, 5));
+	t = std::thread(&APMTracker::Run, tracker);
+
+	apm_text = new wxStaticText(this, wxID_ANY, (wxString::Format(wxT("%i APM"), 5)), wxPoint(5, 5));
 	this->timer = new wxTimer(this);
 	Bind(wxEVT_TIMER, &Main::UpdateFrame, this);
 	timer->Start(1000);
 }
 Main::~Main()
 {
+	t.join();
+	delete tracker;
 }
 
 void Main::UpdateFrame(wxTimerEvent& ev)
 {
-	this->apm_text->SetLabel(wxString::Format(wxT("%i APM"), APMTracker::Initialise().GetAPM()));
+	this->apm_text->SetLabel(wxString::Format(wxT("%i APM"), tracker->GetAPM()));
 }

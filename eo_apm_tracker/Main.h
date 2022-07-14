@@ -10,9 +10,11 @@ public:
 	Main();
 	~Main();
 	void UpdateFrame(wxTimerEvent& ev);
-	int apm_counter = 0;
 
 private:
+	APMTracker* tracker = nullptr;
+	std::thread t;
+
 	wxTimer* timer = nullptr;
 	wxStaticText* apm_text = nullptr;
 };
