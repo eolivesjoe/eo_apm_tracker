@@ -13,16 +13,27 @@ APMTracker::~APMTracker()
 
 void APMTracker::Run()
 {
-	SetHook();
+	SetHooks();
 	MSG message = { };
+
+	t = std::thread(&APMTracker::Tick, this);
 
 	while (GetMessage(&message, NULL, NULL, NULL) > 0)
 	{
 		TranslateMessage(&message);
 		DispatchMessage(&message);
 	}
+	t.join();
+	RemoveHooks();
+}
 
-	RemoveHook();
+void APMTracker::Tick()
+{
+	while (1)
+	{
+		++current_apm;
+		Sleep(1000);
+	}
 }
 
 void APMTracker::SetAPM(int new_apm)
@@ -35,12 +46,12 @@ int APMTracker::GetAPM()
 	return current_apm;
 }
 
-void APMTracker::SetHook(void)
+void APMTracker::SetHooks(void)
 {
 	keyboard = SetWindowsHookEx(WH_KEYBOARD_LL, (HOOKPROC)KeyboardHook, 0, 0);
 }
 
-void APMTracker::RemoveHook(void)
+void APMTracker::RemoveHooks(void)
 {
 	UnhookWindowsHookEx(keyboard);
 }
