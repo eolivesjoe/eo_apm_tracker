@@ -20,7 +20,7 @@ private:
 	static HHOOK keyboard;
 	static void SetHooks(void);
 	static void RemoveHooks(void);
-	static LRESULT CALLBACK KeyboardHook(int, WORD, LONG);
+	static LRESULT CALLBACK KeyboardHook(int nCode, WORD wParam, LONG lParam);
 
 	std::thread t;
 	void Tick();
