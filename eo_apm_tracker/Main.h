@@ -13,11 +13,8 @@ public:
 	int apm_counter = 0;
 
 private:
-	APMTracker* tracker = nullptr;
 	wxTimer* timer = nullptr;
 	wxStaticText* apm_text = nullptr;
-
-	std::thread t;
 };
 
 

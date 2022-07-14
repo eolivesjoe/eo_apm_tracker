@@ -1,40 +1,32 @@
 
 #include "APMTracker.h"
 
-APMTracker::APMTracker()
-{
-}
-
 APMTracker::~APMTracker()
 {
+	t.join();
 }
 
 void APMTracker::Run()
 {
-	this->thread_state = true;
+	t = std::thread(&APMTracker::Listener, this);
+}
+
+void APMTracker::Listener()
+{
+	HHOOK keyboard_hook = SetWindowsHookEx(WH_KEYBOARD_LL, &KeyboardHook, 0, 0);
 
 	MSG msg = { };
 	while (1)
 	{
-		while (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) > 0)
+		while (GetMessage(&msg, NULL, NULL, NULL) > 0)
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
-		Sleep(1);
-	}
-
-	// unhook mouse and keyboard
-	this->thread_state = false;
-}
-
-void APMTracker::Tick()
-{
-	while (1)
-	{
-		// increment a second in apm vector
 		Sleep(1000);
 	}
+
+	UnhookWindowsHookEx(keyboard_hook);
 }
 
 void APMTracker::SetAPM(int apm)

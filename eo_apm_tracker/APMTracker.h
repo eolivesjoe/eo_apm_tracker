@@ -7,19 +7,41 @@
 class APMTracker
 {
 public:
-	APMTracker();
+	APMTracker(const APMTracker&) = delete;
+
 	~APMTracker();
 
+	static APMTracker& Initialise()
+	{
+		return tracker_instance;
+	}
+
 	void Run();
-	void Tick();
+
+	static LRESULT CALLBACK KeyboardHook(int nCode, WPARAM wParam, LPARAM lParam)
+	{
+		APMTracker t;
+		switch (wParam)
+		{
+		case WM_KEYDOWN:
+			t.SetAPM(1);
+		}
+
+		return CallNextHookEx(NULL, nCode, wParam, lParam);
+	}
 
 	void SetAPM(int apm);
 	int GetAPM();
 
 private:
-	bool thread_state = false;
-	bool thread_error = false;
+	APMTracker() {}
 
-	int apm = 0;
+	static APMTracker tracker_instance;
+	
+	void Listener();
+
+	std::thread t;
+
+	int apm = 10;
 };
 
