@@ -72,7 +72,7 @@ LRESULT CALLBACK APMTracker::KeyboardProc(int nCode, WORD wParam, LONG lParam)
 LRESULT CALLBACK APMTracker::MouseProc(int nCode, WORD wParam, LONG lParam)
 {
 	if (wParam == WM_LBUTTONUP || wParam == WM_RBUTTONUP ||
-		wParam == WM_MBUTTONUP)
+		wParam == WM_MBUTTONUP || wParam == WM_XBUTTONUP)
 		SetAPM(GetAPM() + 1);
 
 	return(CallNextHookEx(keyboard_hook, nCode, wParam, lParam));
