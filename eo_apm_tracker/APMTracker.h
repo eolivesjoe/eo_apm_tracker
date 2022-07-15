@@ -17,10 +17,12 @@ public:
 	static int GetAPM();
 
 private:
-	static HHOOK keyboard;
+	static HHOOK keyboard_hook;
+	static HHOOK mouse_hook;
 	static void SetHooks(void);
 	static void RemoveHooks(void);
-	static LRESULT CALLBACK KeyboardHook(int nCode, WORD wParam, LONG lParam);
+	static LRESULT CALLBACK KeyboardProc(int nCode, WORD wParam, LONG lParam);
+	static LRESULT CALLBACK MouseProc(int nCode, WORD wParam, LONG lParam);
 
 	std::thread t;
 	void Tick();
