@@ -32,9 +32,15 @@ void APMTracker::Tick()
 {
 	while (1)
 	{
-		// increment second
+		// Move to next space in vector.
 		Sleep(1000);
 	}
+}
+
+void APMTracker::AddAction()
+{
+	// Add 1 to current space int vector
+	SetAPM(GetAPM() + 1);
 }
 
 void APMTracker::SetAPM(int new_apm)
@@ -62,10 +68,8 @@ void APMTracker::RemoveHooks(void)
 LRESULT CALLBACK APMTracker::KeyboardProc(int nCode, WORD wParam, LONG lParam)
 {
 	if (wParam == WM_KEYUP || wParam == WM_SYSKEYUP)
-		SetAPM(GetAPM() + 1);
-	// add action to vector[curr sec] 
+		AddAction();
 
-	// call mouse hook?
 	return(CallNextHookEx(mouse_hook, nCode, wParam, lParam));
 }
 
@@ -73,7 +77,7 @@ LRESULT CALLBACK APMTracker::MouseProc(int nCode, WORD wParam, LONG lParam)
 {
 	if (wParam == WM_LBUTTONUP || wParam == WM_RBUTTONUP ||
 		wParam == WM_MBUTTONUP || wParam == WM_XBUTTONUP)
-		SetAPM(GetAPM() + 1);
+		AddAction();
 
 	return(CallNextHookEx(keyboard_hook, nCode, wParam, lParam));
 }
