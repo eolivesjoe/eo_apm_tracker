@@ -5,10 +5,10 @@ int APMTracker::current_apm = 0;
 Main::Main() : wxFrame(nullptr, wxID_ANY, "eo_apm_tracker", wxPoint(1840, 50), wxSize(70, 30), wxSTAY_ON_TOP)
 {
 	this->tracker = new APMTracker();
-
 	t = std::thread(&APMTracker::Run, tracker);
 
 	apm_text = new wxStaticText(this, wxID_ANY, (wxString::Format(wxT("%i APM"), 0)), wxPoint(5, 5));
+
 	this->timer = new wxTimer(this);
 	Bind(wxEVT_TIMER, &Main::UpdateFrame, this);
 	timer->Start(500);
