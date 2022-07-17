@@ -32,14 +32,19 @@ void APMTracker::Tick()
 {
 	while (1)
 	{
-		// Move to next space in vector.
+		IncrementSecond();
 		Sleep(1000);
 	}
 }
 
+void APMTracker::IncrementSecond()
+{
+	// mutex for vector
+}
+
 void APMTracker::AddAction()
 {
-	// Add 1 to current space int vector
+	// mutex for vector
 	SetAPM(GetAPM() + 1);
 }
 

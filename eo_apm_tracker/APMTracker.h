@@ -23,7 +23,7 @@ private:
 	static LRESULT CALLBACK MouseProc(int nCode, WORD wParam, LONG lParam);
 
 	void Tick();
-
+	void IncrementSecond();
 	static void AddAction();
 	static void SetAPM(int apm);
 
