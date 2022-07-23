@@ -11,7 +11,7 @@ Main::Main() : wxFrame(nullptr, wxID_ANY, "eo_apm_tracker", wxPoint(1840, 50), w
 
 	this->timer = new wxTimer(this);
 	Bind(wxEVT_TIMER, &Main::UpdateFrame, this);
-	timer->Start(500);
+	timer->Start(1000);
 }
 Main::~Main()
 {

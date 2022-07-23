@@ -3,6 +3,8 @@
 
 HHOOK APMTracker::keyboard_hook = NULL;
 HHOOK APMTracker::mouse_hook = NULL;
+std::mutex APMTracker::m;
+std::vector<int> APMTracker::actions_per_second;
 
 APMTracker::APMTracker()
 {
@@ -10,6 +12,7 @@ APMTracker::APMTracker()
 
 APMTracker::~APMTracker()
 {
+	t.join();
 }
 
 void APMTracker::Run()
@@ -24,7 +27,6 @@ void APMTracker::Run()
 		TranslateMessage(&message);
 		DispatchMessage(&message);
 	}
-	t.join();
 	RemoveHooks();
 }
 
@@ -39,13 +41,27 @@ void APMTracker::Tick()
 
 void APMTracker::IncrementSecond()
 {
-	// mutex for vector
+	const std::lock_guard<std::mutex> lock(m);
+	SetAPM(CalculateAPM());
+	actions_per_second.push_back(0);
 }
 
 void APMTracker::AddAction()
 {
-	// mutex for vector
-	SetAPM(GetAPM() + 1);
+	const std::lock_guard<std::mutex> lock(m);
+	++actions_per_second[actions_per_second.size() - 1];
+}
+
+int APMTracker::CalculateAPM()
+{
+	// TODO: calculate for first minute
+
+	if (actions_per_second.size() > apm_window)
+	{
+		current_apm += actions_per_second[actions_per_second.size() - 1];
+		current_apm -= actions_per_second[actions_per_second.size() - (apm_window - 1)];
+	}
+	return current_apm;
 }
 
 void APMTracker::SetAPM(int new_apm)

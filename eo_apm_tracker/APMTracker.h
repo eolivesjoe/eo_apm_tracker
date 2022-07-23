@@ -15,6 +15,8 @@ public:
 	static int GetAPM();
 
 private:
+
+	// Functions for registering keyboard and mouse actions.
 	static HHOOK keyboard_hook;
 	static HHOOK mouse_hook;
 	static void SetHooks(void);
@@ -25,17 +27,13 @@ private:
 	void Tick();
 	void IncrementSecond();
 	static void AddAction();
+	int CalculateAPM();
 	static void SetAPM(int apm);
 
 	std::thread t;
-	static int current_apm;
+
+	static std::mutex m;
 	static std::vector<int> actions_per_second;
+	const int apm_window = 60;
+	static int current_apm;
 };
-
-/*
-var apm_window = 60
-rolling_apm = 0
-
-	rolling_apm = current_apm + next second - aps[curr sec - window]?
-*/
-
