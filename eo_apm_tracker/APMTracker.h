@@ -36,4 +36,5 @@ private:
 	static std::vector<int> actions_per_second;
 	const int apm_window = 60;
 	static int current_apm;
+	int rolling_actions;
 };

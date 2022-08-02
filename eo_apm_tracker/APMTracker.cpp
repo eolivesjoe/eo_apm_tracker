@@ -8,6 +8,7 @@ std::vector<int> APMTracker::actions_per_second;
 
 APMTracker::APMTracker()
 {
+	this->rolling_actions = 0;
 }
 
 APMTracker::~APMTracker()
@@ -54,14 +55,18 @@ void APMTracker::AddAction()
 
 int APMTracker::CalculateAPM()
 {
-	// TODO: calculate for first minute
+	if (actions_per_second.size() == 0)
+	{
+		return 0;
+	}
 
+	rolling_actions += actions_per_second[actions_per_second.size() - 1];
 	if (actions_per_second.size() > apm_window)
 	{
-		current_apm += actions_per_second[actions_per_second.size() - 1];
-		current_apm -= actions_per_second[actions_per_second.size() - (apm_window - 1)];
+		rolling_actions -= actions_per_second[(actions_per_second.size() - 1) - apm_window];
+		return rolling_actions;
 	}
-	return current_apm;
+	return (rolling_actions / actions_per_second.size()) * apm_window;
 }
 
 void APMTracker::SetAPM(int new_apm)
