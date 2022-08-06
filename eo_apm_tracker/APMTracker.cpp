@@ -66,7 +66,8 @@ int APMTracker::CalculateAPM()
 		rolling_actions -= actions_per_second[(actions_per_second.size() - 1) - apm_window];
 		return rolling_actions;
 	}
-	return (rolling_actions / actions_per_second.size()) * apm_window;
+	float apm = (rolling_actions / actions_per_second.size()) * apm_window;
+	return static_cast<int>(apm);
 }
 
 void APMTracker::SetAPM(int new_apm)
