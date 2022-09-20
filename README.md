@@ -2,7 +2,5 @@
 
 ### TODO
 
-Mouse hook,
-incorporate vector to calculate apm
-
-check highest point
+  Heat map
+  Store highest / lowest apm
