@@ -1,5 +1,5 @@
 ## eo_apm_tracker
-### Erik Olivesjoe
+#### Erik Olivesjoe
 
 Simple program that keeps track of your [APM](https://en.wikipedia.org/wiki/Actions_per_minute). I use it when playing Age of Empires II.
 
@@ -15,4 +15,4 @@ Uses [wxWidget](https://www.wxwidgets.org/) as the GUI library.
 
   Store highest / lowest apm.
 
-  Calculate effective apm. (https://sites.google.com/site/sc2gears/features/replay-analyzer/apm-types) 
+  Calculate effective apm. (https://sites.google.com/site/sc2gears/features/replay-analyzer/apm-types).
