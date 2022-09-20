@@ -42,8 +42,10 @@ void APMTracker::Tick()
 
 void APMTracker::IncrementSecond()
 {
+	int calculated_apm = CalculateAPM();
+
 	const std::lock_guard<std::mutex> lock(m);
-	SetAPM(CalculateAPM());
+	SetAPM(calculated_apm);
 	actions_per_second.push_back(0);
 }
 
@@ -55,18 +57,18 @@ void APMTracker::AddAction()
 
 int APMTracker::CalculateAPM()
 {
-	if (actions_per_second.size() == 0 || actions_per_second.size() - 1 == 0)
-	{
-		return 0;
-	}
+	int current_second = actions_per_second.size() - 1;
 
-	rolling_actions += actions_per_second[actions_per_second.size() - 1];
+	if (current_second < 1)
+		return 0;
+
+	rolling_actions += actions_per_second[current_second];
 	if (actions_per_second.size() > apm_window)
 	{
-		rolling_actions -= actions_per_second[(actions_per_second.size() - 1) - apm_window];
+		rolling_actions -= actions_per_second[current_second - apm_window];
 		return rolling_actions;
 	}
-	float apm = static_cast<float>(apm_window) / static_cast<float>(actions_per_second.size() -1);
+	float apm = static_cast<float>(apm_window) / static_cast<float>(current_second);
 	return static_cast<int>(apm * rolling_actions);
 }
 
