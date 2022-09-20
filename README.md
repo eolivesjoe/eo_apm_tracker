@@ -1,5 +1,5 @@
 ## eo_apm_tracker
-#### Erik Olivesjoe
+### By: Erik Olivesjoe
 
 Simple program that keeps track of your [APM](https://en.wikipedia.org/wiki/Actions_per_minute). I use it when playing Age of Empires II.
 
@@ -7,7 +7,10 @@ It creates a small windows in the top right corner that will track the number of
 
 Uses [wxWidget](https://www.wxwidgets.org/) as the GUI library.
 
-### TODO
+![image](https://user-images.githubusercontent.com/53548129/191281034-879ed948-1731-47b0-830a-1255291d4502.png)
+
+
+#### TODO:
 
   Expand GUI with start/stop and keeping track of open applications.
 
