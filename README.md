@@ -5,13 +5,16 @@ Simple program that keeps track of your [APM](https://en.wikipedia.org/wiki/Acti
 
 It creates a small windows in the top right corner that will track the number of actions you've made in the last 60 seconds, excluding scrolling.
 
+Currently only displays correctly for 1920x1080.
+
 Uses [wxWidget](https://www.wxwidgets.org/) as the GUI library.
 
-![image](https://user-images.githubusercontent.com/53548129/191281034-879ed948-1731-47b0-830a-1255291d4502.png)
-
+![screen](https://user-images.githubusercontent.com/53548129/191447115-20a9e511-c1fc-4ad5-ac4b-d14f61ba4d5d.png)
 
 #### TODO:
 
+  Add support for more resolutions.
+  
   Expand GUI with start/stop and keeping track of open applications.
 
   Heat map.
