@@ -3,7 +3,7 @@
 
 Simple program that keeps track of your [APM](https://en.wikipedia.org/wiki/Actions_per_minute). I use it when playing Age of Empires II.
 
-It creates a small windows in the top right corner that will track the number of actions you've made in the last 60 seconds, excluding scrolling.
+It creates a small window in the top right corner that will track the number of actions you've made in the last 60 seconds, excluding scrolling.
 
 Currently only displays correctly for 1920x1080.
 
