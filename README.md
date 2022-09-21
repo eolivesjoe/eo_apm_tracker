@@ -9,8 +9,7 @@ Currently only displays correctly for 1920x1080.
 
 Uses [wxWidget](https://www.wxwidgets.org/) as the GUI library.
 
-![image](https://user-images.githubusercontent.com/53548129/191281034-879ed948-1731-47b0-830a-1255291d4502.png)
-
+![screen](https://user-images.githubusercontent.com/53548129/191447115-20a9e511-c1fc-4ad5-ac4b-d14f61ba4d5d.png)
 
 #### TODO:
 
