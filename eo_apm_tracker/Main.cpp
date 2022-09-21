@@ -2,7 +2,7 @@
 #include "Main.h"
 
 int APMTracker::current_apm = 0;
-Main::Main() : wxFrame(nullptr, wxID_ANY, "eo_apm_tracker", wxPoint(1840, 50), wxSize(70, 30), wxSTAY_ON_TOP)
+Main::Main() : wxFrame(nullptr, wxID_ANY, "eo_apm_tracker", wxPoint(1840, 60), wxSize(70, 30), wxSTAY_ON_TOP)
 {
 	this->tracker = new APMTracker();
 	t = std::thread(&APMTracker::Run, tracker);
