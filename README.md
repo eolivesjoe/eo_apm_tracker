@@ -3,22 +3,24 @@
 
 Simple program that keeps track of your [APM](https://en.wikipedia.org/wiki/Actions_per_minute). I use it when playing Age of Empires II.
 
-It creates a small window in the top right corner that will track the number of actions you've made in the last 60 seconds, excluding scrolling.
+It creates a small window in the bottom left of the screen that will track the number of actions you've made in the last 60 seconds, excluding scrolling.
 
-Currently only displays correctly for 1920x1080.
+It currently supports both 2560x1440 and 1920x1080.
+
+![apm_tracker](https://user-images.githubusercontent.com/53548129/208678872-5642b132-0277-45a3-85bd-1c9c9dc9bed2.png)
 
 Uses [wxWidget](https://www.wxwidgets.org/) as the GUI library.
 
-![screen](https://user-images.githubusercontent.com/53548129/191447115-20a9e511-c1fc-4ad5-ac4b-d14f61ba4d5d.png)
-
 #### TODO:
 
-  Add support for more resolutions.
+  Add support for more resolutions
   
-  Expand GUI with start/stop and keeping track of open applications.
+  Still need to correct 1920x1080 position
+  
+  Expand GUI with start/stop and keeping track of open applications
 
-  Heat map.
+  Heat map
 
-  Store highest / lowest apm.
+  Store highest / lowest apm
 
-  Calculate effective apm. (https://sites.google.com/site/sc2gears/features/replay-analyzer/apm-types).
+  Calculate effective apm (https://sites.google.com/site/sc2gears/features/replay-analyzer/apm-types)
