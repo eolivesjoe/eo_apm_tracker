@@ -7,7 +7,7 @@
 class Main : public wxFrame
 {
 public:
-	Main();
+	Main(int xPos, int yPos);
 	~Main();
 	void UpdateFrame(wxTimerEvent& ev);
 

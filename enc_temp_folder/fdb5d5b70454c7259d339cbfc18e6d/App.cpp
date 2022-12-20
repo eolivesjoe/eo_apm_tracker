@@ -20,8 +20,8 @@ std::map<int, int> App::DetectRes()
 
 	if (xRes == 1920) 
 	{
-		xPos = 20;
-		yPos = 700;
+		xPos = 1840;
+		yPos = 60;
 	}
 	else 
 	{
