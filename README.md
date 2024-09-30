@@ -1,26 +1,33 @@
-## eo_apm_tracker
-### By: Erik Olivesjoe
+# APM Tracker
 
-Simple program that keeps track of your [APM](https://en.wikipedia.org/wiki/Actions_per_minute). I use it when playing Age of Empires II.
+## Overview
 
-It creates a small window in the bottom left of the screen that will track the number of actions you've made in the last 60 seconds, excluding scrolling.
+The **APM Tracker** is a C++ tool designed to measure the actions per minute (APM) of users. APM is a key performance indicator for individuals engaged in activities requiring high precision and efficiency, such as gaming or productivity software. This tracker calculates APM by using low-level hooks to monitor keyboard and mouse inputs.
 
-It currently supports both 2560x1440 and 1920x1080.
+## Features
 
-![apm_tracker](https://user-images.githubusercontent.com/53548129/208678872-5642b132-0277-45a3-85bd-1c9c9dc9bed2.png)
+- **Multi-threading**: Utilizes threads to ensure non-blocking performance, allowing the tracker to run in the background.
+- **Mutex**: Implements mutexes to ensure thread-safe operations.
+- **Low-level hooks**: Leverages hooks to capture user input without interrupting the user experience.
 
-Uses [wxWidget](https://www.wxwidgets.org/) as the GUI library.
+## Technologies
 
-#### TODO:
+- **C++**: Core programming language.
+- **WinAPI**: For capturing input events via low-level hooks.
+- **Threading**: Used to calculate APM in real-time while maintaining low CPU usage.
 
-  Add support for more resolutions
-  
-  Still need to correct 1920x1080 position
-  
-  Expand GUI with start/stop and keeping track of open applications
+## How to Use
 
-  Heat map
+1. Clone the repository.
+2. Build the project using any C++-compatible IDE (such as Visual Studio or CLion).
+3. Run the program, and it will begin calculating APM based on your system’s input.
 
-  Store highest / lowest apm
+## Future Improvements
 
-  Calculate effective apm (https://sites.google.com/site/sc2gears/features/replay-analyzer/apm-types)
+- Adding a graphical user interface (GUI) for better user interaction.
+- Improving the accuracy of mouse input detection.
+- Cross-platform support.
+
+## License
+
+This project is licensed under the MIT License.
