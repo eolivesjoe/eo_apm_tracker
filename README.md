@@ -6,7 +6,7 @@ The **APM Tracker** is a C++ tool designed to measure the actions per minute (AP
 
 ## Features
 
-- **Multi-threading**: Utilizes threads to ensure non-blocking performance, allowing the tracker to run in the background.
+- **Multi-threading**: Utilises threads to ensure non-blocking performance, allowing the tracker to run in the background.
 - **Mutex**: Implements mutexes to ensure thread-safe operations.
 - **Low-level hooks**: Leverages hooks to capture user input without interrupting the user experience.
 
@@ -19,7 +19,7 @@ The **APM Tracker** is a C++ tool designed to measure the actions per minute (AP
 ## How to Use
 
 1. Clone the repository.
-2. Build the project using any C++-compatible IDE (such as Visual Studio or CLion).
+2. Build the project using any C++-compatible IDE.
 3. Run the program, and it will begin calculating APM based on your system’s input.
 
 ## Future Improvements
@@ -27,7 +27,3 @@ The **APM Tracker** is a C++ tool designed to measure the actions per minute (AP
 - Adding a graphical user interface (GUI) for better user interaction.
 - Improving the accuracy of mouse input detection.
 - Cross-platform support.
-
-## License
-
-This project is licensed under the MIT License.
