@@ -2,7 +2,7 @@
 
 #include <wx/wx.h>
 #include <wx/timer.h>
-#include "apm_tracker.h"
+#include "../apm/apm_tracker.h"
 
 class MainFrame : public wxFrame
 {
