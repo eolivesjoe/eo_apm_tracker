@@ -36,4 +36,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="future_plans.txt" />
+  </ItemGroup>
 </Project>

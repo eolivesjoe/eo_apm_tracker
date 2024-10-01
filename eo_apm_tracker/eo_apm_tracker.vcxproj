@@ -152,6 +152,9 @@
     <ClCompile Include="app.cpp" />
     <ClCompile Include="mainframe.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="future_plans.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
