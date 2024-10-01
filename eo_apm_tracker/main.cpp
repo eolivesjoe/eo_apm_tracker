@@ -1,5 +1,5 @@
 
-#include "main.h"
+#include "Main.h"
 
 int APMTracker::current_apm = 0;
 

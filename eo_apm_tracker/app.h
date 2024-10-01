@@ -2,7 +2,7 @@
 
 #include <wx/wx.h>
 #include <map>
-#include "Main.h"
+#include "main.h"
 
 class App : public wxApp
 {
