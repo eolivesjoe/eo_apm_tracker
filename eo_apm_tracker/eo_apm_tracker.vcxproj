@@ -143,14 +143,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="APMTracker.h" />
-    <ClInclude Include="App.h" />
-    <ClInclude Include="Main.h" />
+    <ClInclude Include="APMTracker2.h" />
+    <ClInclude Include="App2.h" />
+    <ClInclude Include="Main2.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="APMTracker.cpp" />
-    <ClCompile Include="App.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="APMTracker2.cpp" />
+    <ClCompile Include="App2.cpp" />
+    <ClCompile Include="Main2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
