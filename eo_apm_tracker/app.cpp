@@ -37,8 +37,8 @@ bool App::OnInit()
 {
 	auto res = DetectRes();
 
-	main_frame = new Main(res.begin()->first, res.begin()->second);
-	main_frame->Show();
+	mainframe = new MainFrame(res.begin()->first, res.begin()->second);
+	mainframe->Show();
 
 	return true;
 }

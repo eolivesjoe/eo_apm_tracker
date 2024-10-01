@@ -5,11 +5,11 @@
 #include <mutex>
 #include <vector>
 
-class APMTracker
+class ApmTracker
 {
 public:
-	APMTracker();
-	~APMTracker();
+	ApmTracker();
+	~ApmTracker();
 
 	void Run();
 	static int GetAPM();

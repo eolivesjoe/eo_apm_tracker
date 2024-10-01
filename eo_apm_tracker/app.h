@@ -2,7 +2,7 @@
 
 #include <wx/wx.h>
 #include <map>
-#include "Main.h"
+#include "mainframe.h"
 
 class App : public wxApp
 {
@@ -15,7 +15,7 @@ public:
 	virtual bool OnInit();
 
 private:
-	Main* main_frame = nullptr;
+	MainFrame* mainframe = nullptr;
 
 };
 

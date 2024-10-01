@@ -116,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(WXWIN)\include; $(WXWIN)\include\msvc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(WXWIN)/include;$(WXWIN)/include/msvc</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -145,12 +145,12 @@
   <ItemGroup>
     <ClInclude Include="apm_tracker.h" />
     <ClInclude Include="app.h" />
-    <ClInclude Include="main.h" />
+    <ClInclude Include="mainframe.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="apm_tracker.cpp" />
     <ClCompile Include="app.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainframe.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
