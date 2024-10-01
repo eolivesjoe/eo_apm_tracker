@@ -18,7 +18,7 @@
     <ClInclude Include="app.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="main.h">
+    <ClInclude Include="mainframe.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="apm_tracker.h">
@@ -29,7 +29,7 @@
     <ClCompile Include="app.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="mainframe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="apm_tracker.cpp">

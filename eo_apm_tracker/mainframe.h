@@ -4,21 +4,17 @@
 #include <wx/timer.h>
 #include "apm_tracker.h"
 
-class Main : public wxFrame
+class MainFrame : public wxFrame
 {
 public:
-	Main(int xPos, int yPos);
-	~Main();
+	MainFrame(int xPos, int yPos);
+	~MainFrame();
 	void UpdateFrame(wxTimerEvent& ev);
 
 private:
-	APMTracker* tracker = nullptr;
+	ApmTracker* tracker = nullptr;
 	std::thread t;
 
 	wxTimer* timer = nullptr;
 	wxStaticText* apm_text = nullptr;
 };
-
-
-
-
