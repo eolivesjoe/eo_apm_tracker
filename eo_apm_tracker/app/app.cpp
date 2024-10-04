@@ -1,5 +1,7 @@
 #include "app.h"
 
+wxIMPLEMENT_APP(App);
+
 App::App()
 {
 }
@@ -34,9 +36,18 @@ std::map<int, int> App::DetectRes()
 bool App::OnInit()
 {
 	auto res = DetectRes();
-
 	mainframe = new MainFrame(res.begin()->first, res.begin()->second);
 	mainframe->Show();
 
 	return true;
+}
+
+bool App::IsMainLoopStopped()
+{
+	return stop_main_loop;
+}
+
+void App::StopMainLoop()
+{
+	stop_main_loop = true;
 }

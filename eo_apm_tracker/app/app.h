@@ -13,9 +13,13 @@ public:
 	std::map<int, int> DetectRes();
 
 	virtual bool OnInit();
+	virtual bool IsMainLoopStopped();
+	virtual void StopMainLoop();
 
 private:
 	MainFrame* mainframe = nullptr;
+	bool stop_main_loop = false;
 
 };
 
+wxDECLARE_APP(App);

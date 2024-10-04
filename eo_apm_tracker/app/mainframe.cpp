@@ -1,5 +1,11 @@
 
 #include "mainframe.h"
+#include "app.h"
+
+wxBEGIN_EVENT_TABLE(MainFrame, wxFrame)
+EVT_TIMER(wxID_ANY, MainFrame::UpdateFrame)
+EVT_CLOSE(MainFrame::OnClose)  // Bind the close event
+wxEND_EVENT_TABLE()
 
 int ApmTracker::current_apm = 0;
 
@@ -27,4 +33,10 @@ MainFrame::~MainFrame()
 void MainFrame::UpdateFrame(wxTimerEvent& ev)
 {
 	this->apm_text->SetLabel(wxString::Format(wxT("%i APM"), tracker->GetAPM()));
+}
+
+void MainFrame::OnClose(wxCloseEvent& event)
+{
+	wxGetApp().StopMainLoop();
+	event.Skip();
 }
