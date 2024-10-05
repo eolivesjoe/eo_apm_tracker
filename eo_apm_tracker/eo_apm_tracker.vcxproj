@@ -146,6 +146,9 @@
     <ClCompile Include="apm\apm_tracker.cpp" />
     <ClCompile Include="app\app.cpp" />
     <ClCompile Include="app\mainframe.cpp" />
+    <ClCompile Include="eapm\eapm.cpp" />
+    <ClCompile Include="hotkey_mapping\hotkey_mapper.cpp" />
+    <ClCompile Include="hotkey_mapping\hotkey_reader.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +158,9 @@
     <ClInclude Include="apm\apm_tracker.h" />
     <ClInclude Include="app\app.h" />
     <ClInclude Include="app\mainframe.h" />
+    <ClInclude Include="eapm\eapm.h" />
+    <ClInclude Include="hotkey_mapping\hotkey_mapper.h" />
+    <ClInclude Include="hotkey_mapping\hotkey_reader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
