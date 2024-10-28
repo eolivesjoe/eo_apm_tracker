@@ -1,8 +1,8 @@
 
-#include "../include/apm/apm_tracker.h"
+#include "apm_tracker.h"
 
-// HHOOK ApmTracker::keyboard_hook = NULL;
-// HHOOK ApmTracker::mouse_hook = NULL;
+HHOOK ApmTracker::keyboard_hook = NULL;
+HHOOK ApmTracker::mouse_hook = NULL;
 std::mutex ApmTracker::m;
 std::vector<int> ApmTracker::actions_per_second;
 
@@ -18,17 +18,17 @@ ApmTracker::~ApmTracker()
 
 void ApmTracker::Run()
 {
-	// SetHooks();
-	// MSG message = { };
+	SetHooks();
+	MSG message = { };
 
-	// t = std::thread(&ApmTracker::Tick, this);
+	t = std::thread(&ApmTracker::Tick, this);
 
-	// while (GetMessage(&message, NULL, NULL, NULL) > 0)
-	// {
-	// 	TranslateMessage(&message);
-	// 	DispatchMessage(&message);
-	// }
-	// RemoveHooks();
+	while (GetMessage(&message, NULL, NULL, NULL) > 0)
+	{
+		TranslateMessage(&message);
+		DispatchMessage(&message);
+	}
+	RemoveHooks();
 }
 
 void ApmTracker::Tick()
@@ -36,7 +36,7 @@ void ApmTracker::Tick()
 	while (1)
 	{
 		IncrementSecond();
-		// Sleep(1000);
+		Sleep(1000);
 	}
 }
 
@@ -82,31 +82,31 @@ int ApmTracker::GetAPM()
 	return current_apm;
 }
 
-// void ApmTracker::SetHooks(void)
-// {
-// 	keyboard_hook = SetWindowsHookEx(WH_KEYBOARD_LL, (HOOKPROC)KeyboardProc, 0, 0);
-// 	mouse_hook = SetWindowsHookEx(WH_MOUSE_LL, (HOOKPROC)MouseProc, 0, 0);
-// }
+void ApmTracker::SetHooks(void)
+{
+	keyboard_hook = SetWindowsHookEx(WH_KEYBOARD_LL, (HOOKPROC)KeyboardProc, 0, 0);
+	mouse_hook = SetWindowsHookEx(WH_MOUSE_LL, (HOOKPROC)MouseProc, 0, 0);
+}
 
-// void ApmTracker::RemoveHooks(void)
-// {
-// 	UnhookWindowsHookEx(keyboard_hook);
-// 	UnhookWindowsHookEx(mouse_hook);
-// }
+void ApmTracker::RemoveHooks(void)
+{
+	UnhookWindowsHookEx(keyboard_hook);
+	UnhookWindowsHookEx(mouse_hook);
+}
 
-// LRESULT CALLBACK ApmTracker::KeyboardProc(int nCode, WORD wParam, LONG lParam)
-// {
-// 	if (wParam == WM_KEYUP || wParam == WM_SYSKEYUP)
-// 		AddAction();
+LRESULT CALLBACK ApmTracker::KeyboardProc(int nCode, WORD wParam, LONG lParam)
+{
+	if (wParam == WM_KEYUP || wParam == WM_SYSKEYUP)
+		AddAction();
 
-// 	return(CallNextHookEx(mouse_hook, nCode, wParam, lParam));
-// }
+	return(CallNextHookEx(mouse_hook, nCode, wParam, lParam));
+}
 
-// LRESULT CALLBACK ApmTracker::MouseProc(int nCode, WORD wParam, LONG lParam)
-// {
-// 	if (wParam == WM_LBUTTONUP || wParam == WM_RBUTTONUP ||
-// 		wParam == WM_MBUTTONUP || wParam == WM_XBUTTONUP)
-// 		AddAction();
+LRESULT CALLBACK ApmTracker::MouseProc(int nCode, WORD wParam, LONG lParam)
+{
+	if (wParam == WM_LBUTTONUP || wParam == WM_RBUTTONUP ||
+		wParam == WM_MBUTTONUP || wParam == WM_XBUTTONUP)
+		AddAction();
 
-// 	return(CallNextHookEx(keyboard_hook, nCode, wParam, lParam));
-// }
+	return(CallNextHookEx(keyboard_hook, nCode, wParam, lParam));
+}
