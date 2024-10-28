@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Windows.h>
+// #include <Windows.h>
 #include <thread>
 #include <mutex>
 #include <vector>
@@ -17,12 +17,12 @@ public:
 private:
 
 	// Functions for registering keyboard and mouse actions.
-	static HHOOK keyboard_hook;
-	static HHOOK mouse_hook;
-	static void SetHooks(void);
-	static void RemoveHooks(void);
-	static LRESULT CALLBACK KeyboardProc(int nCode, WORD wParam, LONG lParam);
-	static LRESULT CALLBACK MouseProc(int nCode, WORD wParam, LONG lParam);
+	// static HHOOK keyboard_hook;
+	// static HHOOK mouse_hook;
+	// static void SetHooks(void);
+	// static void RemoveHooks(void);
+	// static LRESULT CALLBACK KeyboardProc(int nCode, WORD wParam, LONG lParam);
+	// static LRESULT CALLBACK MouseProc(int nCode, WORD wParam, LONG lParam);
 
 	void Tick();
 	void IncrementSecond();

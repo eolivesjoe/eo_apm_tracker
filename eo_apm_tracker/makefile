@@ -1,46 +1,24 @@
-# Compiler and flags
+# Compiler
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++17 -Iapp -Iapm
 
-# Directories
-SRC_DIR = src
-APP_DIR = app
-APM_DIR = apm
-OBJ_DIR = obj
-BIN_DIR = bin
+# Compiler flags
+CXXFLAGS = -Wall -Wextra -std=c++20 `wx-config --cxxflags`
+
+# Linker flags
+LDFLAGS = `wx-config --libs`
+
+# Source files
+SRC = src/main.cpp
 
 # Output executable
-TARGET = $(BIN_DIR)/apm_tracker
+OUT = main
 
-# Source files and object files
-SRCS = $(SRC_DIR)/main.cpp $(APP_DIR)/app.cpp $(APP_DIR)/mainframe.cpp $(APM_DIR)/apm_tracker.cpp
-OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
+# Build the application
+all: $(OUT)
 
-# Default target
-all: $(TARGET)
+$(OUT): $(SRC)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
-# Link object files to create the final executable
-$(TARGET): $(OBJS) | $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
-
-# Compile source files into object files
-$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
-	mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# Directories
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
-
-$(BIN_DIR):
-	mkdir -p $(BIN_DIR)
-
-# Clean up the build
+# Clean up
 clean:
-	rm -rf $(OBJ_DIR) $(BIN_DIR)
-
-# Run the program
-run: $(TARGET)
-	./$(TARGET)
-
-.PHONY: all clean run
+	rm -f $(OUT)

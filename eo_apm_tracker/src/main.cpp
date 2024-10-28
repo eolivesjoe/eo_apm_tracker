@@ -1,52 +1,23 @@
 #include <wx/wx.h>
-#include <wx/evtloop.h>
-#include "app/app.h"
 
-App* g_app = nullptr;
+class MyApp : public wxApp {
+public:
+    virtual bool OnInit();
+};
 
-int Run(int argc, char** argv);
+class MyFrame : public wxFrame {
+public:
+    MyFrame(const wxString& title);
+};
 
-int main(int argc, char** argv)
-{
-	return Run(argc, argv);
+wxIMPLEMENT_APP(MyApp);
+
+bool MyApp::OnInit() {
+    MyFrame *frame = new MyFrame("Hello wxWidgets");
+    frame->Show(true);
+    return true;
 }
 
-int Run(int argc, char** argv)
-{
-    g_app = new App();
-
-    if (!wxEntryStart(argc, argv))
-    {
-        return EXIT_FAILURE;
-    }
-
-    if (!g_app->OnInit())
-    {
-        return EXIT_FAILURE;
-    }
-
-    wxEventLoopBase* loop = wxEventLoopBase::GetActive();
-    if (!loop)
-    {
-        loop = new wxEventLoop();
-        wxEventLoopBase::SetActive(loop);
-    }
-
-    while (!g_app->IsMainLoopStopped())
-    {
-        if (loop->Pending())
-        {
-            loop->Dispatch();
-        }
-        else
-        {
-            loop->Yield();
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
-        }
-    }
-
-    wxEntryCleanup();
-
-    delete g_app;
-    return EXIT_SUCCESS;
+MyFrame::MyFrame(const wxString& title)
+    : wxFrame(nullptr, wxID_ANY, title, wxDefaultPosition, wxSize(400, 300)) {
 }

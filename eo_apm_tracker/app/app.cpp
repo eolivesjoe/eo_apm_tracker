@@ -1,4 +1,4 @@
-#include "app.h"
+#include "../include/app/app.h"
 
 wxIMPLEMENT_APP(App);
 
@@ -14,8 +14,10 @@ std::map<int, int> App::DetectRes()
 	int xPos = 0;
 	int yPos = 0;
 
-	int xRes = GetSystemMetrics(SM_CXSCREEN);
-	int yRes = GetSystemMetrics(SM_CYSCREEN);
+	// int xRes = GetSystemMetrics(SM_CXSCREEN);
+	// int yRes = GetSystemMetrics(SM_CXSCREEN);
+	int xRes = 0;
+	int yRes = 0;
 
 
 	if (xRes == 1920) 
