@@ -1,5 +1,5 @@
 
-#include "apm_tracker.h"
+#include "../include/apm_tracker.h"
 
 HHOOK ApmTracker::keyboard_hook = NULL;
 HHOOK ApmTracker::mouse_hook = NULL;
