@@ -1,4 +1,4 @@
-#include "../../../libs/wxWidgets/include/wx/wx.h"
+#include <wx/wx.h>
 #include <wx/evtloop.h>
 #include "../include/app.h"
 

@@ -17,23 +17,17 @@ The **APM Tracker** is a C++ tool designed to measure the actions per minute (AP
 - **Threading**: Used to calculate APM in real-time while maintaining low CPU usage.
 - **wxWidgets**: A library for creating a graphical user interface (GUI).
 
+## Prerequisites
+
+- **CMake**: Ensure you have CMake installed on your system. You can download it from the [official CMake website](https://cmake.org/download/).
+- **wxWidgets**: Download and install wxWidgets from the official [wxWidgets website](https://www.wxwidgets.org/downloads/).
+
 ## How to Use
 
-1. Clone the repository.
-2. **Set Up wxWidgets**:
-   - **Install wxWidgets**:
-     - Download and install `wxWidgets.zip` from the official [wxWidgets website](https://www.wxwidgets.org/downloads/).
-   - **Configure Your IDE**:
-     - **For Visual Studio**:
-       - Select the latest wx_vc in the mfw folder and batch build.
-       - Set `WXWIN` to point to your `wxWidgets` installation directory for easier access.
-       - Under **C/C++** → **General**, add the path to the `wxWidgets` include directory (e.g., `$(WXWIN)\include;$(WXWIN)\include\msvc`) to **Additional Include Directories**.
-3. Build the project using your IDE.
-4. Run the program, and it will begin calculating APM based on your system’s input.
+# TODO
 
 ## Future Improvements
-
-- Adding a graphical user interface (GUI) for better user interaction.
-- Improving the accuracy of mouse input detection.
+- Adding a proper graphical user interface (GUI) for better user interaction.
+- Adding EAPM calculation for StarCraft Brood War
 - Improve usability
 - Cross-platform support.
