@@ -1,6 +1,7 @@
 # Compiler and flags
 CC = g++
-CFLAGS = -Ieo_apm_tracker/include -I../libs/wxWidgets/include -Wall -Wextra -std=c++20 -MMD
+CFLAGS = -Ieo_apm_tracker/include -I../../libs/wxWidgets/include -Wall -Wextra -std=c++20
+LDFLAGS = -L../../libs/wxWidgets/lib/gcc_lib -lwxbase33u -lwxmsw33u_core
 
 # Directories
 SRC_DIR = eo_apm_tracker/src
@@ -22,7 +23,7 @@ all: $(TARGET)
 
 # Linking target
 $(TARGET): $(OBJ)
-	$(CC) -o $@ $^
+	$(CC) $(OBJ) -o $@ $(LDFLAGS)
 
 # Compile source files into object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
@@ -32,11 +33,4 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 clean:
 	rm -rf $(OBJ_DIR)/*.o $(OBJ_DIR)/*.d $(TARGET)
 
-# Debug target
-debug: CFLAGS += -g
-debug: $(TARGET)
-
-# Include dependencies
--include $(OBJ:.o=.d)
-
-.PHONY: all clean debug
+.PHONY: all clean
