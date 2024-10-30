@@ -38,12 +38,12 @@ The **APM Tracker** is a C++ tool designed to measure the actions per minute (AP
     mkdir build
     cd build
     cmake ..
-    make
+    cmake --build . --config Release
     ```
 
 4. Run the APM Tracker:
     ```bash
-    ./eo_apm_tracker
+    ./eo_apm_tracker.exe
     ```
 
 ## Future Improvements
