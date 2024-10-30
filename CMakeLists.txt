@@ -23,9 +23,9 @@ set(SRC_FILES
 )
 
 set(HEADER_FILES
-    ${CMAKE_SOURCE_DIR}/eo_apm_tracker/include/apm_tracker.h
-    ${CMAKE_SOURCE_DIR}/eo_apm_tracker/include/app.h
-    ${CMAKE_SOURCE_DIR}/eo_apm_tracker/include/mainframe.h
+    ${CMAKE_SOURCE_DIR}/eo_apm_tracker/src/apm_tracker.h
+    ${CMAKE_SOURCE_DIR}/eo_apm_tracker/src/app.h
+    ${CMAKE_SOURCE_DIR}/eo_apm_tracker/src/mainframe.h
 )
 
 include_directories(${CMAKE_SOURCE_DIR}/eo_apm_tracker/include ${wxWidgets_INCLUDE_DIRS})
