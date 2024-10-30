@@ -24,10 +24,31 @@ The **APM Tracker** is a C++ tool designed to measure the actions per minute (AP
 
 ## How to Use
 
-# TODO
+1. Clone this repository:
+    ```bash
+    git clone https://github.com/yourusername/eo_apm_tracker.git
+    cd eo_apm_tracker
+    ```
+
+2. Set up the `WXWIN` environment variable to point to your wxWidgets installation:
+    - Add it to your environment variables (e.g., `C:\path\to\wxWidgets`).
+
+3. Build the project with CMake:
+    ```bash
+    mkdir build
+    cd build
+    cmake ..
+    make
+    ```
+
+4. Run the APM Tracker:
+    ```bash
+    ./eo_apm_tracker
+    ```
 
 ## Future Improvements
-- Adding a proper graphical user interface (GUI) for better user interaction.
-- Adding EAPM calculation for StarCraft Brood War
-- Improve usability
-- Cross-platform support.
+
+- **Graphical User Interface**: Expanding the GUI to offer more controls and better user interaction.
+- **Effective Actions Per Minute (EAPM)**: Adding EAPM calculations for more accurate performance tracking in StarCraft: Brood War.
+- **Usability Enhancements**: Simplifying setup and adding more intuitive controls.
+- **Cross-Platform Support**: Extending compatibility beyond Windows.
