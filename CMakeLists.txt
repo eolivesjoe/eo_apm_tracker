@@ -13,19 +13,22 @@ set(wxWidgets_INCLUDE_DIRS "${wxWidgets_ROOT_DIR}/include")
 set(wxWidgets_USE_LIBS core base png tiff jpeg zlib regex expat)
 find_package(wxWidgets REQUIRED COMPONENTS ${wxWidgets_USE_LIBS})
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
 include(${wxWidgets_USE_FILE})
 
 set(SRC_FILES
-    ${CMAKE_SOURCE_DIR}/eo_apm_tracker/src/apm_tracker.cpp
-    ${CMAKE_SOURCE_DIR}/eo_apm_tracker/src/app.cpp
-    ${CMAKE_SOURCE_DIR}/eo_apm_tracker/src/mainframe.cpp
     ${CMAKE_SOURCE_DIR}/eo_apm_tracker/src/main.cpp
+	${CMAKE_SOURCE_DIR}/eo_apm_tracker/src/apm_tracker.h
+    ${CMAKE_SOURCE_DIR}/eo_apm_tracker/src/apm_tracker.cpp
+	${CMAKE_SOURCE_DIR}/eo_apm_tracker/src/app.h
+    ${CMAKE_SOURCE_DIR}/eo_apm_tracker/src/app.cpp
+    ${CMAKE_SOURCE_DIR}/eo_apm_tracker/src/mainframe.h
+    ${CMAKE_SOURCE_DIR}/eo_apm_tracker/src/mainframe.cpp
 )
 
 set(HEADER_FILES
-    ${CMAKE_SOURCE_DIR}/eo_apm_tracker/src/apm_tracker.h
-    ${CMAKE_SOURCE_DIR}/eo_apm_tracker/src/app.h
-    ${CMAKE_SOURCE_DIR}/eo_apm_tracker/src/mainframe.h
 )
 
 include_directories(${CMAKE_SOURCE_DIR}/eo_apm_tracker/include ${wxWidgets_INCLUDE_DIRS})
@@ -33,7 +36,3 @@ include_directories(${CMAKE_SOURCE_DIR}/eo_apm_tracker/include ${wxWidgets_INCLU
 add_executable(eo_apm_tracker ${SRC_FILES} ${HEADER_FILES})
 
 target_link_libraries(eo_apm_tracker ${wxWidgets_LIBRARIES})
-
-if (MINGW)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall")
-endif()
