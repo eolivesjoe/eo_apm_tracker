@@ -1,6 +1,6 @@
 #include <wx/wx.h>
 #include <wx/evtloop.h>
-#include "../include/app.h"
+#include "app.h"
 
 App* g_app = nullptr;
 

@@ -1,6 +1,6 @@
 
-#include "../include/mainframe.h"
-#include "../include/app.h"
+#include "mainframe.h"
+#include "app.h"
 
 wxBEGIN_EVENT_TABLE(MainFrame, wxFrame)
 EVT_TIMER(wxID_ANY, MainFrame::UpdateFrame)
