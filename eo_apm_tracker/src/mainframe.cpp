@@ -4,7 +4,7 @@
 
 wxBEGIN_EVENT_TABLE(MainFrame, wxFrame)
 EVT_TIMER(wxID_ANY, MainFrame::UpdateFrame)
-EVT_CLOSE(MainFrame::OnClose)
+EVT_CLOSE(MainFrame::OnClose)  // Bind the close event
 wxEND_EVENT_TABLE()
 
 int ApmTracker::current_apm = 0;
