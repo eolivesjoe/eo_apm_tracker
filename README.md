@@ -25,9 +25,10 @@ The **APM Tracker** is a C++ tool designed to measure the actions per minute (AP
      - Download and install `wxWidgets.zip` from the official [wxWidgets website](https://www.wxwidgets.org/downloads/).
    - **Configure Your IDE**:
      - **For Visual Studio**:
-       - Select the latest wx_vc in the mfw folder and batch build.
-       - Set `WXWIN` to point to your `wxWidgets` installation directory for easier access.
-       - Under **C/C++** → **General**, add the path to the `wxWidgets` include directory (e.g., `$(WXWIN)\include;$(WXWIN)\include\msvc`) to **Additional Include Directories**.
+       - Select the latest wx_vc.sln in the `\build\msw` folder and build.
+       - Set `WXWIN` as a path variable to point to your `wxWidgets` installation directory for easier access.
+       - Under **Linker** → **General**, add the path to the `wxWidgets` lib directory (e.g., `$(WXWIN)\lib\vc_x64_lib`) to **Additional Include Directories**.
+       - Under **C/C++** → **General**, add the path to the `wxWidgets` include directory and the msvc subfolder (e.g., `$(WXWIN)\include;$(WXWIN)\include\msvc`) to **Additional Include Directories**.
 3. Build the project using your IDE.
 4. Run the program, and it will begin calculating APM based on your system’s input.
 
