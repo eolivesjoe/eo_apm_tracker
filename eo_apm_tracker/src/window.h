@@ -3,22 +3,26 @@
 #include <windows.h>
 
 #include "apm_tracker.h"
-
-class Window
+namespace window
 {
-public:
-    Window(HINSTANCE hInstance, int nCmdShow, ApmTracker* tracker);
-    ~Window();
-    int run();
+	class Window
+	{
+	public:
+		Window(HINSTANCE hInstance, int nCmdShow, tracker::ApmTracker* tracker);
+		~Window();
+		int run();
 
-private:
-    static LRESULT CALLBACK wndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+	private:
+		static LRESULT CALLBACK wndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-    void initializeWindow();
+		void initializeWindow();
+		void onPaint();
 
-    HINSTANCE m_hInstance;
-    HWND m_hwnd;
-    int m_nCmdShow;
+		HINSTANCE m_hInstance;
+		HWND m_hwnd;
+		int m_nCmdShow;
+		HFONT m_hFont;
 
-    ApmTracker* m_tracker;
-};
+		tracker::ApmTracker* m_tracker;
+	};
+}

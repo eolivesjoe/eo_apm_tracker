@@ -3,12 +3,12 @@
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow)
 {
-    ApmTracker tracker;
-    tracker.Start();
+    tracker::ApmTracker tracker;
+    tracker.start();
 
-    Window window(hInstance, nCmdShow, &tracker);
+    window::Window window(hInstance, nCmdShow, &tracker);
     window.run();
 
-    tracker.Stop();
+    tracker.stop();
     return 0;
 }
