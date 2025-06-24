@@ -36,4 +36,5 @@ private:
 	const int apm_window = 60;
 	static int current_apm;
 	int rolling_actions;
+	std::atomic<bool> m_running;
 };

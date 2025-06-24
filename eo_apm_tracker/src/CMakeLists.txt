@@ -8,6 +8,7 @@ set(SOURCES
 set(HEADERS
     apm_tracker.h
     window.h
+	constants.h
 )
 
 add_executable(apm_tracker ${SOURCES} ${HEADERS})

@@ -1,10 +1,14 @@
 #pragma once
+
 #include <windows.h>
+
+#include "apm_tracker.h"
 
 class Window
 {
 public:
-    Window(HINSTANCE hInstance, int nCmdShow);
+    Window(HINSTANCE hInstance, int nCmdShow, ApmTracker* tracker);
+    ~Window();
     int run();
 
 private:
@@ -15,4 +19,6 @@ private:
     HINSTANCE m_hInstance;
     HWND m_hwnd;
     int m_nCmdShow;
+
+    ApmTracker* m_tracker;
 };

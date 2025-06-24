@@ -11,6 +11,7 @@ ApmTracker::ApmTracker()
 {
 	actions_per_second.push_back(0);
 	this->rolling_actions = 0;
+	this->m_running = true;
 }
 
 ApmTracker::~ApmTracker()
@@ -26,6 +27,7 @@ void ApmTracker::Start()
 
 void ApmTracker::Stop()
 {
+	m_running = false;
 	RemoveHooks();
 	if (t.joinable())
 	{
@@ -35,7 +37,7 @@ void ApmTracker::Stop()
 
 void ApmTracker::Tick()
 {
-	while (1)
+	while (m_running)
 	{
 		IncrementSecond();
 		Sleep(1000);
@@ -99,17 +101,20 @@ void ApmTracker::RemoveHooks(void)
 
 LRESULT CALLBACK ApmTracker::KeyboardProc(int nCode, WORD wParam, LONG lParam)
 {
-	if (wParam == WM_KEYUP || wParam == WM_SYSKEYUP)
+	if (nCode >= 0 && (wParam == WM_KEYUP || wParam == WM_SYSKEYUP))
 		AddAction();
 
-	return(CallNextHookEx(mouse_hook, nCode, wParam, lParam));
+	return(CallNextHookEx(NULL, nCode, wParam, lParam));
 }
 
 LRESULT CALLBACK ApmTracker::MouseProc(int nCode, WORD wParam, LONG lParam)
 {
-	if (wParam == WM_LBUTTONUP || wParam == WM_RBUTTONUP ||
-		wParam == WM_MBUTTONUP || wParam == WM_XBUTTONUP)
+	if (nCode >= 0 && (
+		wParam == WM_LBUTTONUP || wParam == WM_RBUTTONUP ||
+		wParam == WM_MBUTTONUP || wParam == WM_XBUTTONUP))
+	{
 		AddAction();
+	}
 
-	return(CallNextHookEx(keyboard_hook, nCode, wParam, lParam));
+	return(CallNextHookEx(NULL, nCode, wParam, lParam));
 }
