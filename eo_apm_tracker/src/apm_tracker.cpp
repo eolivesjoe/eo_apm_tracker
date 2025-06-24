@@ -8,12 +8,13 @@ std::vector<int> ApmTracker::actions_per_second;
 
 ApmTracker::ApmTracker()
 {
+	actions_per_second.push_back(0);
 	this->rolling_actions = 0;
 }
 
 ApmTracker::~ApmTracker()
 {
-	t.join();
+
 }
 
 void ApmTracker::Run()
@@ -52,7 +53,8 @@ void ApmTracker::IncrementSecond()
 void ApmTracker::AddAction()
 {
 	const std::lock_guard<std::mutex> lock(m);
-	++actions_per_second[actions_per_second.size() - 1];
+	if(!actions_per_second.empty())
+		++actions_per_second[actions_per_second.size() - 1];
 }
 
 int ApmTracker::CalculateAPM()
