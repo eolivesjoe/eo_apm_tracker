@@ -5,36 +5,41 @@
 #include <mutex>
 #include <vector>
 
-class ApmTracker
+namespace tracker
 {
-public:
-	ApmTracker();
-	~ApmTracker();
+	class ApmTracker
+	{
+	public:
+		ApmTracker();
+		~ApmTracker();
 
-	void Run();
-	static int GetAPM();
+		void start();
+		void stop();
+		void resetSession();
 
-private:
+		static int getAPM();
 
-	// Functions for registering keyboard and mouse actions.
-	static HHOOK keyboard_hook;
-	static HHOOK mouse_hook;
-	static void SetHooks(void);
-	static void RemoveHooks(void);
-	static LRESULT CALLBACK KeyboardProc(int nCode, WORD wParam, LONG lParam);
-	static LRESULT CALLBACK MouseProc(int nCode, WORD wParam, LONG lParam);
+	private:
+		static HHOOK m_keyboard_hook;
+		static HHOOK m_mouse_hook;
+		static void setHooks(void);
+		static void removeHooks(void);
+		static LRESULT CALLBACK keyboardProc(int nCode, WORD wParam, LONG lParam);
+		static LRESULT CALLBACK mouseProc(int nCode, WORD wParam, LONG lParam);
 
-	void Tick();
-	void IncrementSecond();
-	static void AddAction();
-	int CalculateAPM();
-	static void SetAPM(int apm);
+		void tick();
+		void incrementSecond();
+		static void addAction();
+		int calculateAPM();
+		static void setAPM(int apm);
 
-	std::thread t;
+		std::thread t;
 
-	static std::mutex m;
-	static std::vector<int> actions_per_second;
-	const int apm_window = 60;
-	static int current_apm;
-	int rolling_actions;
-};
+		static std::mutex m_lock;
+		static std::vector<int> m_actions_per_second;
+		const int m_apm_window = 60;
+		static int m_current_apm;
+		int m_rolling_actions;
+		std::atomic<bool> m_running;
+	};
+}

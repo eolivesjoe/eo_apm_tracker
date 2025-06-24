@@ -1,52 +1,14 @@
-#include <wx/wx.h>
-#include <wx/evtloop.h>
-#include "app.h"
+#include "window.h"
+#include "apm_tracker.h"
 
-App* g_app = nullptr;
-
-int Run(int argc, char** argv);
-
-int main(int argc, char** argv)
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow)
 {
-	return Run(argc, argv);
-}
+    tracker::ApmTracker tracker;
+    tracker.start();
 
-int Run(int argc, char** argv)
-{
-    g_app = new App();
+    window::Window window(hInstance, nCmdShow, &tracker);
+    window.run();
 
-    if (!wxEntryStart(argc, argv))
-    {
-        return EXIT_FAILURE;
-    }
-
-    if (!g_app->OnInit())
-    {
-        return EXIT_FAILURE;
-    }
-
-    wxEventLoopBase* loop = wxEventLoopBase::GetActive();
-    if (!loop)
-    {
-        loop = new wxEventLoop();
-        wxEventLoopBase::SetActive(loop);
-    }
-
-    while (!g_app->IsMainLoopStopped())
-    {
-        if (loop->Pending())
-        {
-            loop->Dispatch();
-        }
-        else
-        {
-            loop->Yield();
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
-        }
-    }
-
-    wxEntryCleanup();
-
-    delete g_app;
-    return EXIT_SUCCESS;
+    tracker.stop();
+    return 0;
 }
