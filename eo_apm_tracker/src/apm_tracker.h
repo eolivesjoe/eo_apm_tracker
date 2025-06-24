@@ -11,12 +11,11 @@ public:
 	ApmTracker();
 	~ApmTracker();
 
-	void Run();
+	void Start();
+	void Stop();
 	static int GetAPM();
 
 private:
-
-	// Functions for registering keyboard and mouse actions.
 	static HHOOK keyboard_hook;
 	static HHOOK mouse_hook;
 	static void SetHooks(void);

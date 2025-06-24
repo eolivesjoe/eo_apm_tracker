@@ -5,6 +5,7 @@ HHOOK ApmTracker::keyboard_hook = NULL;
 HHOOK ApmTracker::mouse_hook = NULL;
 std::mutex ApmTracker::m;
 std::vector<int> ApmTracker::actions_per_second;
+int ApmTracker::current_apm = 0;
 
 ApmTracker::ApmTracker()
 {
@@ -17,19 +18,19 @@ ApmTracker::~ApmTracker()
 
 }
 
-void ApmTracker::Run()
+void ApmTracker::Start()
 {
 	SetHooks();
-	MSG message = { };
-
 	t = std::thread(&ApmTracker::Tick, this);
+}
 
-	while (GetMessage(&message, NULL, NULL, NULL) > 0)
-	{
-		TranslateMessage(&message);
-		DispatchMessage(&message);
-	}
+void ApmTracker::Stop()
+{
 	RemoveHooks();
+	if (t.joinable())
+	{
+		t.join();
+	}
 }
 
 void ApmTracker::Tick()
