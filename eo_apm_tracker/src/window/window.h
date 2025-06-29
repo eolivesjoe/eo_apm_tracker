@@ -1,8 +1,8 @@
 #pragma once
 
 #include <windows.h>
+#include "../tracker/apm_tracker.h"
 
-#include "apm_tracker.h"
 namespace window
 {
 	class Window
@@ -25,4 +25,4 @@ namespace window
 
 		tracker::ApmTracker* m_tracker;
 	};
-}
+} // namespace window

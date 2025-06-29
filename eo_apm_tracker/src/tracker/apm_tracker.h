@@ -42,4 +42,4 @@ namespace tracker
 		int m_rolling_actions;
 		std::atomic<bool> m_running;
 	};
-}
+} // namespace tracker

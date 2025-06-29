@@ -1,6 +1,5 @@
-
 #include "apm_tracker.h"
-#include "constants.h"
+#include "../constants.h"
 
 namespace tracker
 {
@@ -66,7 +65,9 @@ namespace tracker
 	{
 		const std::lock_guard<std::mutex> lock(m_lock);
 		if (!m_actions_per_second.empty())
+		{
 			++m_actions_per_second[m_actions_per_second.size() - 1];
+		}
 	}
 
 	int ApmTracker::calculateAPM()
