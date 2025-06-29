@@ -1,22 +1,21 @@
-# List sources
 set(SOURCES
     main.cpp
-    apm_tracker.cpp
-    window.cpp
+    tracker/apm_tracker.cpp
+    window/window.cpp
+	logger/logger.cpp
+	app/app.cpp
 )
 
 set(HEADERS
-    apm_tracker.h
-    window.h
+    tracker/apm_tracker.h
+    window/window.h
+	app/app.h
+	logger/logger.h
 	constants.h
 )
 
 add_executable(apm_tracker ${SOURCES} ${HEADERS})
 
-# Tell linker this is a Windows GUI app with WinMain
-set_target_properties(apm_tracker PROPERTIES WIN32_EXECUTABLE TRUE)
-
-# Link Windows libs
 target_link_libraries(apm_tracker
     user32
     gdi32

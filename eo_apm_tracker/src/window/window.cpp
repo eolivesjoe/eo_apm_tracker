@@ -1,7 +1,7 @@
 #include <string>
 
 #include "window.h"
-#include "constants.h"
+#include "../constants.h"
 
 namespace window
 {

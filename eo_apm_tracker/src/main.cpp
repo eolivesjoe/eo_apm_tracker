@@ -1,14 +1,13 @@
-#include "window.h"
-#include "apm_tracker.h"
+#include "app/app.h"
+#include "logger/logger.h"
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow)
+int main(int argc, char* argv[])
 {
-    tracker::ApmTracker tracker;
-    tracker.start();
+    logger::init();
 
-    window::Window window(hInstance, nCmdShow, &tracker);
-    window.run();
+    app::App app;
+    logger::info("starting tracker...");
+    app.run();
 
-    tracker.stop();
     return 0;
 }
